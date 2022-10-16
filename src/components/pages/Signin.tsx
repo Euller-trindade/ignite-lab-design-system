@@ -15,7 +15,7 @@ export function SignIn() {
     event.preventDefault();
 
     await axios.post("/sessions", {
-      email: "diego@rocketseat.com.br",
+      email: "eullercarregosa@gmail.com",
       password: "12345678",
     });
     setIsUserSignedIn(true);
