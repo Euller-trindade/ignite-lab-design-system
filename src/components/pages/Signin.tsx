@@ -18,7 +18,6 @@ export function SignIn() {
       email: "diego@rocketseat.com.br",
       password: "12345678",
     });
-
     setIsUserSignedIn(true);
   }
 
