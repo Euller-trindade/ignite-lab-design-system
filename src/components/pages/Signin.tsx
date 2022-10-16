@@ -1,40 +1,47 @@
 import { Checkbox } from "@radix-ui/react-checkbox";
-import { Envelope, Lock } from "phosphor-react";
 import { FormEvent, useState } from "react";
 import axios from "axios";
-import { Logo } from "../../Logo";
+import { Envelope, Lock } from "phosphor-react";
 import { Button } from "../Button";
 import { Heading } from "../Heading";
-import { Text } from "../Text";
 import { TextInput } from "../TextInput";
+import { Text } from "../Text";
+import { Logo } from "../../Logo";
 
 export function SignIn() {
-  const [isUserSignedIn, setisUserSignedIn] = useState(false);
+  const [isUserSignedIn, setIsUserSignedIn] = useState(false);
 
   async function handleSignIn(event: FormEvent) {
     event.preventDefault();
+
     await axios.post("/sessions", {
-      email: "eullercarregosa@gmail.com",
+      email: "diego@rocketseat.com.br",
       password: "12345678",
     });
-    setisUserSignedIn(true);
+
+    setIsUserSignedIn(true);
   }
+
   return (
     <div className="w-screen h-screen bg-gray-900 flex flex-col items-center justify-center text-gray-100">
       <header className="flex flex-col items-center">
         <Logo />
+
         <Heading size="lg" className="mt-4">
           Ignite Lab
         </Heading>
+
         <Text size="lg" className="text-gray-400 mt-1">
-          Faça login e comece a usar
+          Faça login e comece a usar!
         </Text>
       </header>
+
       <form
         onSubmit={handleSignIn}
         className="flex flex-col gap-4 items-stretch w-full max-w-sm mt-10"
       >
         {isUserSignedIn && <Text>Login realizado!</Text>}
+
         <label htmlFor="email" className="flex flex-col gap-3">
           <Text className="font-semibold">Endereço de e-mail</Text>
           <TextInput.Root>
@@ -76,6 +83,7 @@ export function SignIn() {
           Entrar na plataforma
         </Button>
       </form>
+
       <footer className="flex flex-col items-center gap-4 mt-8">
         <Text asChild size="sm">
           <a href="" className="text-gray-400 underline hover:text-gray-200">
